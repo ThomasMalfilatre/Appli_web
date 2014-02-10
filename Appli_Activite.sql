@@ -1,3 +1,11 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.5
+-- http://www.phpmyadmin.net
+--
+-- Client :  info2
+-- Généré le :  Lun 10 Février 2014 à 08:42
+-- Version du serveur :  5.5.24-4-log
+-- Version de PHP :  5.4.9-4ubuntu2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -8,6 +16,9 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+--
+-- Base de données :  `DBgelot`
+--
 
 -- --------------------------------------------------------
 
@@ -46,6 +57,14 @@ CREATE TABLE IF NOT EXISTS `PARTICIPE` (
   PRIMARY KEY (`users`,`activite`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `PARTICIPE`
+--
+
+INSERT INTO `PARTICIPE` (`users`, `activite`, `creneau`) VALUES
+('admin', 4, '2014-02-12 00:00:00'),
+('admin', 5, '2014-02-13 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -57,6 +76,15 @@ CREATE TABLE IF NOT EXISTS `USERS` (
   `passwd` varchar(40) NOT NULL,
   PRIMARY KEY (`login`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `USERS`
+--
+
+INSERT INTO `USERS` (`login`, `passwd`) VALUES
+('admin', '21232f297a57a5a743894a0e4a801fc3'),
+('thomas', 'ef6e65efc188e7dffd7335b646a85a21'),
+('toto', 'f71dbe52628a3f83a77ab494817525c6');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

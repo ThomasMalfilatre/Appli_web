@@ -52,7 +52,7 @@
     <meta charset="utf-8">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>Application Wab</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -80,7 +80,7 @@
             <div class="form-group">
               <input type="password" name="password" placeholder="Password" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Connexion</button>
+            <a href="Activite.php"><button type="submit" class="btn btn-success">Connexion</button></a>
             <a href="inscription.php"><button type="button" name="inscription" class="btn btn-success" >Inscription</button></a>
           </form>
         </div><!--/.navbar-collapse -->

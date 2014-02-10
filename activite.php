@@ -1,45 +1,13 @@
 <!DOCTYPE html>
 
-<?php
-
-		require_once 'connect.php';
-
-		session_start();
-		if(!empty($_SESSION['login'])){
-			echo 'Bienvenue ' . $_SESSION['login']."<br />";
-		}
-		else{
-			header('Location: log.php');
-		}
-
-		echo "Votre liste d'activités :<br />";
-
-		$dsn = "mysql:dbname=".BASE.";host=".SERVER;
-		try{
-			$connexion = new PDO($dsn,USER,PASSWD);
-		}
-		catch(PDOException $e){
-			printf("Echec de la connexion : %s\n", $e->getMessage());
-			exit();
-		}
-		$requete = "SELECT * FROM PARTICIPE p, ACTIVITE a WHERE p.activite = a.id AND p.users = :log";
-		$stmt = $connexion -> prepare($requete);
-		$stmt -> bindParam(':log', $_SESSION['login']);
-		$stmt->execute();
-
-		echo "<ul>";
-		foreach($stmt as $q){
-			echo "<li> $q[nom] le $q[creneau] </li>";
-		}
-		echo "</ul>";
-?>
+<?php session_start() ?>
 
 <html lang="fr">
   <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+    <title>Application Web</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -69,6 +37,8 @@
             </div>
             <button type="submit" class="btn btn-success">Connexion</button>
             <a href="inscription.php"><button type="button" name="inscription" class="btn btn-success" >Inscription</button></a>
+            <a href="deconnexion.php"><button type="button" class="btn btn-success" >Deconnexion</button></a>
+            <? echo $_SESSION['login'] // permet de mettre le nom de l'utilisateur courant dans la barre de menu?>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -79,10 +49,30 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Bienvenue!</h1>
-        <p> Cette application gère les activités des clients enregistrés </p>
+        <h1>Liste des activités</h1>
+        <p> Voiçi la liste de vos activités </p>
       </div>
+      <?php include('liste_activite.php') ?>
+      <label for="activite">Activité :</label>
+		<select name="activite">
+		<?php include('ajout_participe.php'); ?>
+		</select>
+		<label for="creneau">Creneau horaire</label>
+
+		<link rel="stylesheet" href="css/jquery-ui.css">
+			<script src="js/jquery-1.9.1.js"></script>
+			<script src="js/jquery-ui.js"></script>
+			<script>
+			$(function() {
+			$( "#datepicker" ).datepicker();
+			});
+		</script>
+
+		<input type="text" name="creneau" id="datepicker"/>
+		<input type="submit" value="S'inscrire" />
+	</p>
     </div>
+    
 
     <div class="container">
 
@@ -97,29 +87,7 @@
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <!-- Placed at the end of the document so the pages load faster -->  
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-<html>
-	<head>
-		<meta charset="utf-8" />
-	</head>
-
-	
-
-	<input type="button" value="participe" onclick="document.location.replace('ajout_participe.php')" />
-	<input type="button" value="deconnexion" onclick="document.location.replace('deconnexion.php')" />
-
-</html>	

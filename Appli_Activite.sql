@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  info2
--- Généré le :  Mar 11 Février 2014 à 09:04
+-- Généré le :  Mar 11 Février 2014 à 10:16
 -- Version du serveur :  5.5.24-4-log
 -- Version de PHP :  5.4.9-4ubuntu2.4
 
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `PARTICIPE` (
   `activite` int(4) NOT NULL,
   `Date` date NOT NULL,
   `Heure` time NOT NULL,
-  PRIMARY KEY (`users`,`activite`)
+  PRIMARY KEY (`users`,`activite`,`Date`,`Heure`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -63,9 +63,10 @@ CREATE TABLE IF NOT EXISTS `PARTICIPE` (
 --
 
 INSERT INTO `PARTICIPE` (`users`, `activite`, `Date`, `Heure`) VALUES
-('admin', 1, '0000-00-00', '07:00:00'),
-('admin', 3, '2014-03-02', '18:50:00'),
-('admin', 5, '2014-02-13', '15:10:00');
+('admin', 2, '2014-11-02', '12:00:00'),
+('admin', 3, '2014-11-02', '13:00:00'),
+('admin', 4, '2014-11-02', '13:00:00'),
+('admin', 5, '2014-02-02', '13:00:00');
 
 -- --------------------------------------------------------
 

@@ -6,7 +6,12 @@
   <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
-
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/bootstrap-datetimepicker.min.js"></script>
+	<script src="js/jquery.ui.timepicker.js"></script>
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">	
     <title>Application Web</title>
 
     <!-- Bootstrap core CSS -->
@@ -19,26 +24,14 @@
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
           <a class="navbar-brand" href="Acceuil.php">Acceuil</a>
         </div>
         <div class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="form" action="Acceuil.php" method="post">
             <div class="form-group">
-              <input type="text" name="login" placeholder="Login" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" name="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Connexion</button>
-            <a href="inscription.php"><button type="button" name="inscription" class="btn btn-success" >Inscription</button></a>
-            <a href="deconnexion.php"><button type="button" class="btn btn-success" >Deconnexion</button></a>
             <? echo $_SESSION['login'] // permet de mettre le nom de l'utilisateur courant dans la barre de menu?>
+            </div>
+            <a href="deconnexion.php"><button type="button" class="btn btn-success" >Deconnexion</button></a>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
@@ -50,27 +43,40 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Liste des activités</h1>
-        <p> Voiçi la liste de vos activités </p>
+        <p> Voici la liste de vos activités </p>
       </div>
       <?php include('liste_activite.php') ?>
-      <label for="activite">Activité :</label>
-		<select name="activite">
-		<?php include('ajout_participe.php'); ?>
-		</select>
-		<label for="creneau">Creneau horaire</label>
-
-		<link rel="stylesheet" href="css/jquery-ui.css">
-			<script src="js/jquery-1.9.1.js"></script>
-			<script src="js/jquery-ui.js"></script>
+      
+      <form action="ajoutParticipeDB.php" method="post">
+      
+		  <label for="activite">Activité :</label>
+			
+			<select name="activite">
+			<?php include('ajout_participe.php'); ?>
+			</select>
+			
+			<label for="Date"> le </label>
 			<script>
-			$(function() {
-			$( "#datepicker" ).datepicker();
-			});
-		</script>
-
-		<input type="text" name="creneau" id="datepicker"/>
-		<input type="submit" value="S'inscrire" />
-	</p>
+				$(function() {
+				$( "#datepicker" ).datepicker();
+				});
+			</script>
+			<input type="text" name="Date" id="datepicker"/>
+			
+			<label for="Heure"> à </label>
+			<script>
+				$(function() {
+				$( "#timepicker" ).timepicker();
+				});
+			</script>
+			<input type="text" name="Heure" id="timepicker"/>
+			
+			
+			
+			<input type="submit" value="S'inscrire" />
+		</form>
+	
+		</p>
     </div>
     
 

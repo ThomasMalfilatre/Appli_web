@@ -10,10 +10,12 @@
 		exit();
 	}
 
-	$ajout = $connexion	-> prepare("INSERT INTO PARTICIPE VALUES (:user, :act, :creneau)");
+	$ajout = $connexion	-> prepare("INSERT INTO PARTICIPE VALUES (:user, :act, :Date, :Heure)");
 	$ajout -> bindParam(':user', $_SESSION['login']);	
 	$ajout -> bindParam(':act', str_split($_POST['activite'])[0]);	
-	$ajout -> bindParam(':creneau', $_POST['creneau']);
+	$d = explode('/', $_POST['Date']);
+	$ajout -> bindParam(':Date', date('c',mktime(0,0,0,$d[1],$d[0], $d[2])));
+	$ajout -> bindParam(':Heure', $_POST['Heure']);
 	$ajout -> execute();
 
 	header("Location: activite.php");

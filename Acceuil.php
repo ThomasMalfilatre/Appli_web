@@ -98,6 +98,7 @@
 
       <footer>
         <p>&copy; IUT ORLEANS 2014</p>
+        <p>Développé par Thomas Malfilatre et Antoine Gelot </p>
       </footer>
     </div> <!-- /container -->
 

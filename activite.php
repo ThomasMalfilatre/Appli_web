@@ -72,7 +72,6 @@
 			<input type="text" name="Heure" id="timepicker"/>	
 			
 			<input type="submit" value="S'inscrire" />
-      <!-- <input type="button" value="Supprimer" onclick="document.location.replace('suppression.php')"/> -->
     </form>
     <br />
     <br />

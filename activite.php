@@ -47,7 +47,7 @@
       </div>
       <?php include('liste_activite.php') ?>
       
-      <form action="ajoutParticipeDB.php" method="post">
+    <form action="ajoutParticipeDB.php" method="post">
       
 		  <label for="activite">Activité :</label>
 			
@@ -69,12 +69,20 @@
 				$( "#timepicker" ).timepicker();
 				});
 			</script>
-			<input type="text" name="Heure" id="timepicker"/>
-			
-			
+			<input type="text" name="Heure" id="timepicker"/>	
 			
 			<input type="submit" value="S'inscrire" />
-		</form>
+      <!-- <input type="button" value="Supprimer" onclick="document.location.replace('suppression.php')"/> -->
+    </form>
+    <br />
+    <br />
+    <form action="suppression.php" method="post">
+      <label> Supprimer une activité :</label>
+      <select name="act">
+        <?php include("liste_deroulante_act.php") ?>
+      </select>
+      <input type="submit" value="Supprimer" />
+    </form> 
 	
 		</p>
     </div>
